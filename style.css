@@ -1,0 +1,213 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #f5f9ff;
+}
+
+/* BACKGROUND GALAXY BIRU */
+.bg-galaxy {
+  min-height: 100vh;
+  position: relative;
+  background: radial-gradient(circle at top, #4f9dff 0, #052547 55%, #000814 100%);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* STAR BACKGROUND LAYERS */
+.stars,
+.twinkling {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.stars {
+  background: transparent
+    url("https://www.transparenttextures.com/patterns/stardust.png")
+    repeat;
+  animation: moveStars 60s linear infinite;
+  opacity: 0.45;
+}
+
+.twinkling {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0, transparent 60%)
+      0 0 / 200px 200px repeat,
+    radial-gradient(circle, rgba(255, 255, 255, 0.2) 0, transparent 60%) 50px 50px /
+      300px 300px repeat;
+  animation: moveTwinkling 80s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes moveStars {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-200px, 0, 0); }
+}
+
+@keyframes moveTwinkling {
+  from { transform: translate3d(0, -200px, 0); }
+  to   { transform: translate3d(200px, 200px, 0); }
+}
+
+/* LAYOUT */
+.center-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 430px;
+  border-radius: 24px;
+  padding: 24px 20px 18px;
+  text-align: center;
+  position: relative;
+}
+
+/* GLASSMORPHISM CARD */
+.glass {
+  background: linear-gradient(145deg, rgba(5, 19, 45, 0.9), rgba(20, 66, 115, 0.9));
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(132, 197, 255, 0.6);
+}
+
+.birthday-card { padding-top: 28px; }
+
+/* TEXT */
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #e3f2ff;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #b7d4ff;
+  margin-bottom: 14px;
+}
+
+.message {
+  font-size: 14px;
+  color: #dbeaff;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.message p + p { margin-top: 6px; }
+
+/* BADGE */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 12px;
+  background: radial-gradient(circle at top left, #66c2ff, #2b6bff);
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #f5fbff;
+}
+
+/* AVATAR */
+.avatar-wrapper { margin-bottom: 10px; }
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.8);
+}
+
+/* WISHES LIST */
+.wishes-list {
+  text-align: left;
+  margin: 10px 0 16px;
+  font-size: 13px;
+  color: #d5e7ff;
+  list-style: none;
+}
+
+.wishes-list li { margin-bottom: 6px; }
+
+/* SMALL FOOTER TEXT */
+.tiny-text {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #a9c9ff;
+}
+
+/* ========================================= */
+/*             GALERI MEMANJANG              */
+/* ========================================= */
+
+.gallery {
+  margin-top: 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.gallery img {
+  width: 100%;
+  max-width: 320px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid rgba(191, 220, 255, 0.9);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.7);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.85);
+  opacity: 0.97;
+}
+
+/* HP kecil */
+@media (max-width: 400px) {
+  .gallery img {
+    max-width: 260px;
+    height: 160px;
+  }
+}
+
+/* ========================================= */
+/* RESPONSIVE CARD */
+/* ========================================= */
+
+@media (max-width: 480px) {
+  .card {
+    padding: 20px 16px 16px;
+    border-radius: 20px;
+  }
+
+  .title { font-size: 20px; }
+
+  .avatar {
+    width: 95px;
+    height: 95px;
+  }
+}
